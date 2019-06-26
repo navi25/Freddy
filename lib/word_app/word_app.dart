@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:freddy/word_app/pages/random_word_page.dart';
+import 'package:freddy/word_app/screens/random_word_screen.dart';
+import 'package:provider/provider.dart';
 
+import 'models/WordModel.dart';
 
 class WordApp extends StatelessWidget{
   
@@ -10,11 +12,18 @@ class WordApp extends StatelessWidget{
   
   @override
   Widget build(BuildContext context) {
-    
+
+    return ChangeNotifierProvider(
+      builder: (context) => WordModel(),
+      child: getApp(),
+    );
+  }
+
+  MaterialApp getApp() {
     return MaterialApp(
       title: _title,
       theme: _defaultTheme,
-      home: _homeScreen ,
+      home: _homeScreen,
     );
   }
 
